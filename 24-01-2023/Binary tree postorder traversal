@@ -1,0 +1,16 @@
+class Solution {
+        ArrayList <Integer> li=new ArrayList<>();
+        public void posto(TreeNode root){
+            if(root==null){
+                return;
+            }
+            posto(root.left);
+            posto(root.right);
+            li.add(root.val);
+        }
+        public List<Integer> postorderTraversal(TreeNode root) {
+            posto(root);
+            return li;
+
+    }
+}
