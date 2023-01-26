@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if (root==null){
+            return true;
+        }
+        return isSym(root.left,root.right);
+
+    }
+    public boolean isSym(TreeNode rl,TreeNode rr){
+        if(rl==null && rr==null){
+            return true;
+        }
+        if(rl==null || rr==null){
+            return false;
+        }
+        if(rl.val!=rr.val){
+            return false;
+        }
+        if(!isSym(rl.left,rr.right)){
+            return false;
+        }
+        if(!isSym(rl.right,rr.left)){
+            return false;
+        }
+        return true;
+    }
+}
