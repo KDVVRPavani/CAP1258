@@ -1,0 +1,17 @@
+class Solution {
+    List <Integer> list=new ArrayList<>();
+    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+        addelem(root1);
+        addelem(root2);
+        Collections.sort(list);
+        return list;
+    }
+    public void addelem(TreeNode root){
+        if(root==null){
+            return;
+        }
+        addelem(root.left);
+        list.add(root.val);
+        addelem(root.right);
+    }
+}
