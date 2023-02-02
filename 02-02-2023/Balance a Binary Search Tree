@@ -1,0 +1,26 @@
+class Solution {
+    ArrayList <Integer> l=new ArrayList<>();
+    public TreeNode balanceBST(TreeNode root) {
+        inorder(root);
+        return cons_tree(0,l.size()-1,l);
+        
+    }
+    public void inorder(TreeNode root){
+        if(root==null){
+            return;
+        }
+        inorder(root.left);
+        l.add(root.val);
+        inorder(root.right);
+    }
+    public TreeNode cons_tree(int start,int end,ArrayList <Integer> l){
+        if(start>end){
+            return null ;
+        }
+        int mid=(start+end)/2;
+        TreeNode n=new TreeNode(l.get(mid));
+        n.left=cons_tree(start,mid-1,l);
+        n.right=cons_tree(mid+1,end,l);
+        return n;
+    }
+}
