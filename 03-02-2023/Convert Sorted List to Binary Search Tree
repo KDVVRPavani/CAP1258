@@ -1,0 +1,25 @@
+class Solution {
+    ArrayList <Integer> l=new ArrayList<>();
+    public void list(ListNode head){
+        while(head!=null){
+            l.add(head.val);
+            head=head.next;
+        }
+    }
+    public TreeNode sortedListToBST(ListNode head) {
+        if(head!=null){
+            list(head);
+        }
+        return cons_tree(0,l.size()-1,l);
+    }
+    public TreeNode cons_tree(int start,int end,ArrayList<Integer>l){
+        if(start>end){
+            return null ;
+        }
+        int mid=(start+end)/2;
+        TreeNode n=new TreeNode(l.get(mid));
+        n.left=cons_tree(start,mid-1,l);
+        n.right=cons_tree(mid+1,end,l);
+        return n;
+    }
+}
