@@ -1,0 +1,24 @@
+class Solution {
+    LinkedList <TreeNode> l=new LinkedList<>();
+    public void flatten(TreeNode root) {
+        preorder(root);
+        if(l.size()>0){
+            root=l.get(0);
+            TreeNode curr = root;
+            for(int i=1;i<l.size();i++){
+                curr.left=null;
+                curr.right=l.get(i);
+                curr=curr.right;
+            }
+        }
+        
+    }
+    public void preorder(TreeNode root){
+        if(root==null){
+            return;
+        }
+        l.add(root);
+        preorder(root.left);
+        preorder(root.right);
+    }
+}
