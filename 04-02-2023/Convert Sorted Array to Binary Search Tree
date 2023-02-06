@@ -1,0 +1,15 @@
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return cons_tree(0,nums.length-1,nums);
+    }
+    public TreeNode cons_tree(int start,int end,int[] nums){
+        if(start>end){
+            return null ;
+        }
+        int mid=(start+end)/2;
+        TreeNode n=new TreeNode(nums[mid]);
+        n.left=cons_tree(start,mid-1,nums);
+        n.right=cons_tree(mid+1,end,nums);
+        return n;
+    }
+}
